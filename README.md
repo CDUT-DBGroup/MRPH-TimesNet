@@ -50,7 +50,7 @@ MRPH-TimesNet/
 | `exp/` | Experiment classes inherited from the Time-Series-Library framework. These files define training, validation, testing, and prediction workflows for different time series tasks. |
 | `data_provider/` | Data loading and preprocessing modules. `data_loader.py` and `data_factory.py` are used to build datasets and dataloaders for model training and evaluation. |
 | `utils/` | Utility functions, including metrics, early stopping, learning rate scheduling, time feature encoding, data augmentation, masking, DTW calculation, and argument printing. |
-| `dataset/` | Dataset description and expected data format. The original rainfall-inflow datasets are not publicly released because they contain confidential underground mine groundwater monitoring data. |
+| `dataset/` | Contains `README.md` with the required data schema and access policy. The original monitoring datasets are not included in this public repository. |
 | `scripts/` | Original shell scripts from Time-Series-Library for benchmark experiments. They are kept mainly for framework completeness and reference. |
 
 ### Configuration and Entry Files
@@ -65,12 +65,12 @@ MRPH-TimesNet/
 
 | File | Description |
 | --- | --- |
-| `run_mrph_timesnet_610.py` | Trains and evaluates the proposed MRPH-TimesNet model on the 610 rainfall-inflow dataset. |
-| `run_mrph_timesnet_670.py` | Trains and evaluates the proposed MRPH-TimesNet model on the 670 rainfall-inflow dataset. |
-| `run_dl_comparison_610.py` | Runs deep learning baseline comparisons on the 610 dataset. |
-| `run_dl_comparison_670.py` | Runs deep learning baseline comparisons on the 670 dataset. |
-| `run_tradition_comparision_610.py` | Runs traditional machine learning baseline comparisons on the 610 dataset. |
-| `run_tradition_comparision_670.py` | Runs traditional machine learning baseline comparisons on the 670 dataset. |
+| `run_mrph_timesnet_610.py` | Trains and evaluates the proposed MRPH-TimesNet model for the 610 experiment after authorized or user-prepared data are placed under `dataset/`. |
+| `run_mrph_timesnet_670.py` | Trains and evaluates the proposed MRPH-TimesNet model for the 670 experiment after authorized or user-prepared data are placed under `dataset/`. |
+| `run_dl_comparison_610.py` | Runs deep learning baseline comparisons for the 610 experiment. |
+| `run_dl_comparison_670.py` | Runs deep learning baseline comparisons for the 670 experiment. |
+| `run_tradition_comparision_610.py` | Runs traditional machine learning baseline comparisons for the 610 experiment. |
+| `run_tradition_comparision_670.py` | Runs traditional machine learning baseline comparisons for the 670 experiment. |
 | `traditional_comparison_common.py` | Shared functions for traditional baseline models, feature construction, training, prediction, and metric calculation. |
 | `run_ablation.py` | Runs ablation experiments for evaluating the contribution of different MRPH-TimesNet components. |
 
@@ -78,16 +78,16 @@ MRPH-TimesNet/
 
 | File | Description |
 | --- | --- |
-| `sensitivity_analysis_610.py` | Performs parameter sensitivity analysis on the 610 dataset. |
-| `sensitivity_analysis_670.py` | Performs parameter sensitivity analysis on the 670 dataset. |
-| `uncertainty_analysis_610.py` | Performs uncertainty analysis for the 610 dataset, including interval-related statistics. |
-| `uncertainty_analysis_670.py` | Performs uncertainty analysis for the 670 dataset. |
-| `hydro_mechanism_analysis_610.py` | Analyzes rainfall-inflow hydrological lag mechanisms on the 610 dataset. |
-| `hydro_mechanism_analysis_670.py` | Analyzes rainfall-inflow hydrological lag mechanisms on the 670 dataset. |
-| `extreme_rainfall_analysis_610.py` | Evaluates model behavior under extreme rainfall events on the 610 dataset. |
-| `extreme_rainfall_analysis_670.py` | Evaluates model behavior under extreme rainfall events on the 670 dataset. |
-| `physical_consistency_analysis_610.py` | Checks physical consistency of prediction results on the 610 dataset. |
-| `physical_consistency_analysis_670.py` | Checks physical consistency of prediction results on the 670 dataset. |
+| `sensitivity_analysis_610.py` | Performs parameter sensitivity analysis for the 610 experiment. |
+| `sensitivity_analysis_670.py` | Performs parameter sensitivity analysis for the 670 experiment. |
+| `uncertainty_analysis_610.py` | Performs uncertainty analysis for the 610 experiment, including interval-related statistics. |
+| `uncertainty_analysis_670.py` | Performs uncertainty analysis for the 670 experiment. |
+| `hydro_mechanism_analysis_610.py` | Analyzes rainfall-inflow hydrological lag mechanisms for the 610 experiment. |
+| `hydro_mechanism_analysis_670.py` | Analyzes rainfall-inflow hydrological lag mechanisms for the 670 experiment. |
+| `extreme_rainfall_analysis_610.py` | Evaluates model behavior under extreme rainfall events for the 610 experiment. |
+| `extreme_rainfall_analysis_670.py` | Evaluates model behavior under extreme rainfall events for the 670 experiment. |
+| `physical_consistency_analysis_610.py` | Checks physical consistency of prediction results for the 610 experiment. |
+| `physical_consistency_analysis_670.py` | Checks physical consistency of prediction results for the 670 experiment. |
 
 ### Plotting Scripts
 
@@ -96,13 +96,13 @@ MRPH-TimesNet/
 | `plot_test_fit_subplots.py` | Plots multiple test-set fitting curves in subplots for model comparison. |
 | `plot_test_fit_individual.py` | Plots individual test-set fitting curves for selected models or datasets. |
 
-### Dataset Files
+### Dataset Availability and Format
 
 | File | Description |
 | --- | --- |
-| `dataset/README.md` | Explains why the original datasets are not included and describes the required CSV format for reproduction. |
-| `dataset/water_timeseries_610.csv` | Confidential rainfall-inflow dataset used in the 610 experiment. It is not included in the public repository and should be prepared by the user if reproduction is required. |
-| `dataset/water_timeseries_670.csv` | Confidential rainfall-inflow dataset used in the 670 experiment. It is not included in the public repository and should be prepared by the user if reproduction is required. |
+| `dataset/README.md` | Describes the data confidentiality policy, access request method, required file names, and CSV schema. |
+| `water_timeseries_610.csv` | Expected local file name for reproducing the 610 experiment. This confidential file is not distributed in the public repository. |
+| `water_timeseries_670.csv` | Expected local file name for reproducing the 670 experiment. This confidential file is not distributed in the public repository. |
 
 ### Model Files
 
@@ -168,14 +168,14 @@ pip install -r requirements.txt
 
 ### 3. Prepare Data
 
-The original rainfall-inflow datasets are not included in this repository because they contain confidential underground mine groundwater monitoring data. To reproduce the experiments, prepare your own datasets under `dataset/` with the following file names:
+The original rainfall-inflow monitoring datasets are not distributed with this public repository because of confidentiality restrictions. The `dataset/` directory provides only a format description. To reproduce the experiments, obtain authorized data from the author or prepare your own data with the same schema, then place the files under `dataset/` with the following names:
 
 ```text
 dataset/water_timeseries_610.csv
 dataset/water_timeseries_670.csv
 ```
 
-The expected data format is a time series CSV file with a `date` column, rainfall-related input variables, water level variables, and the target variable `water_inflow`. See `dataset/README.md` for the required column structure.
+The expected data format is a chronological time series CSV file with a `date` column, rainfall-related input variables, water-level variables, and the target variable `water_inflow`. See `dataset/README.md` for the full schema and data access instructions.
 
 ### 4. Train and Test MRPH-TimesNet
 
