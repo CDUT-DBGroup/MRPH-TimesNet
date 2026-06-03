@@ -105,14 +105,14 @@ MRPH-TimesNet/
 
 ### Model Files
 
-| File | Description |
+| Type | Description |
 | --- | --- |
-| `models/MRPH_TimesNet.py` | Proposed MRPH-TimesNet model for physics-informed rainfall-inflow forecasting. |
-| `models/TimesNet.py` | Original TimesNet baseline model. |
-| `models/Autoformer.py`, `models/Informer.py`, `models/Transformer.py`, `models/FEDformer.py`, `models/Reformer.py` | Transformer-family forecasting baselines. |
-| `models/DLinear.py`, `models/LightTS.py`, `models/PatchTST.py`, `models/iTransformer.py`, `models/TimeMixer.py`, `models/TimeXer.py` | Representative deep time series forecasting baselines. |
-| `models/LSTM.py`, `models/CNN_LSTM.py` | Recurrent and hybrid neural network baselines used for rainfall-inflow comparison. |
-| Other files in `models/` | Additional models inherited from Time-Series-Library and retained for reproducibility or future comparison. |
+| Proposed model | `models/MRPH_TimesNet.py`<br>Physics-informed multi-scale model for rainfall-inflow forecasting. |
+| TimesNet baseline | `models/TimesNet.py`<br>Original TimesNet model used as the main baseline. |
+| Transformer baselines | `Autoformer.py`, `Informer.py`, `Transformer.py`<br>`FEDformer.py`, `Reformer.py` |
+| Time series baselines | `DLinear.py`, `LightTS.py`, `PatchTST.py`<br>`iTransformer.py`, `TimeMixer.py`, `TimeXer.py` |
+| Neural baselines | `LSTM.py`, `CNN_LSTM.py`<br>Recurrent and hybrid neural network baselines. |
+| Other inherited models | Additional model files retained from Time-Series-Library for reproducibility and future comparison. |
 
 ## Environment
 
