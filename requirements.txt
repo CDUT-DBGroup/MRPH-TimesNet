@@ -1,0 +1,28 @@
+# Core scientific stack
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+tqdm
+
+# Deep learning
+# Install the CUDA/CPU build of PyTorch that matches your environment:
+# https://pytorch.org/get-started/locally/
+torch
+
+# Time-Series-Library dependencies
+einops
+local-attention
+reformer-pytorch
+sktime
+sympy
+PyWavelets
+datasets
+huggingface_hub
+patool
+
+# Hydrological baseline and analysis dependencies
+statsmodels
+xgboost
+
