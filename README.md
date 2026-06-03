@@ -2,6 +2,10 @@
 
 This repository contains the implementation of a physics-informed multi-scale temporal learning framework for rainfall-inflow prediction in complex underground mine groundwater systems. The project is developed based on the Time-Series-Library framework and extends it with a hydrology-oriented MRPH-TimesNet model, rainfall-inflow experiments, uncertainty analysis, extreme rainfall event analysis, hydrological lag analysis, physical consistency analysis, and ablation studies.
 
+## Framework Overview
+
+![MRPH-TimesNet framework](images/MRPH_TimesNet.png)
+
 ## Project Structure
 
 ```text
@@ -249,11 +253,6 @@ python plot_test_fit_individual.py
 
 The generated figures can be used for visual comparison of predicted and observed inflow values.
 
-## Notes for Reproducibility
-
-- The `checkpoints/` directory stores trained model weights and is usually not recommended for direct GitHub upload.
-- If pretrained weights are required for reproducing analysis scripts, please provide them through GitHub Releases, Zenodo, Hugging Face, or another external storage service.
-- The original rainfall-inflow datasets are confidential and are not included in the public repository. The required data format is described in `dataset/README.md`.
 
 ## Acknowledgement
 
