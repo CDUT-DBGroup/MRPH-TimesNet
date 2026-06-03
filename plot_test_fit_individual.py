@@ -1,11 +1,11 @@
 """
-逐个模型绘制测试集真实值与预测值的拟合图。
+Plot fitting curves for observed and predicted values on the test set for each model.
 
-功能说明：
-- 从 `results/dl_result/dl_models_1step_summary.csv` 读取各模型结果目录。
-- 读取每个模型测试阶段生成的 `pred.npy` 和 `true.npy`。
-- 为每个模型单独生成一张测试集拟合图。
-- 所有图片保存到 `results/dl_result/dl_models_test_fit_individual/` 目录。
+Functionality:
+- Read model result directories from `results/dl_result/dl_models_1step_summary.csv`.
+- Load `pred.npy` and `true.npy` generated during testing for each model.
+- Generate one test-set fitting plot for each model.
+- Save all figures to `results/dl_result/dl_models_test_fit_individual/`.
 """
 
 from pathlib import Path

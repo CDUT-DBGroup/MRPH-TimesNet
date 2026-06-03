@@ -1,8 +1,8 @@
 """
-RF670 水文机制支撑实验。
+RF670 hydrological mechanism support experiment.
 
-复用 hydro_mechanism_analysis_610.py 的主体逻辑，
-仅调整默认数据集、检查点、随机种子与输出目录。
+Reuses the main workflow from hydro_mechanism_analysis_610.py.
+Only the default dataset, checkpoint, random seed, and output directory are changed.
 """
 from pathlib import Path
 import sys

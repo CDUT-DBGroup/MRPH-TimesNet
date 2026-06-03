@@ -1,15 +1,15 @@
 """
-RF670 不确定性分析实验。
+RF670 uncertainty analysis experiment.
 
-复用 uncertainty_analysis_610.py 的主体逻辑，
-仅调整默认数据集、检查点、Ensemble 种子与随机种子配置。
+Reuses the main workflow from uncertainty_analysis_610.py.
+Only the default dataset, checkpoints, ensemble seeds, and random seed configuration are changed.
 """
 from pathlib import Path
 import sys
 
 import run_mrph_timesnet_670 as mrph_runner
 
-# 复用 610 版脚本时，先将其依赖的 set_random_seed 重定向到 670 版运行脚本。
+# Redirect set_random_seed to the 670 runner before reusing the 610 analysis script.
 sys.modules["run_mrph_timesnet"] = mrph_runner
 
 import uncertainty_analysis_610 as base

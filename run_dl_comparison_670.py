@@ -1,5 +1,5 @@
 """
-深度学习模型对比脚本 - 运行TimesNet论文中对比的模型
+Deep learning model comparison script for TimesNet-related baselines.
 """
 import glob
 import os
@@ -14,7 +14,7 @@ from utils.metrics import NSE
 DL_RESULTS_DIR = Path("results") / "dl_result"
 DL_SUMMARY_DIR = DL_RESULTS_DIR / "res_all"
 
-# 可用的深度学习模型
+# Available deep learning models
 MODEL_SPECS = [
     {"run_name": "TimesNet", "display_name": "TimesNet"},
     {"run_name": "DLinear", "display_name": "DLinear"},
@@ -26,7 +26,7 @@ MODEL_SPECS = [
     {"run_name": "CNN_LSTM", "display_name": "CNN-LSTM"},
 ]
 
-# 数据集配置
+# Dataset configuration
 DATASETS = [
     ("water_timeseries_670.csv", "670"),
 ]
@@ -61,7 +61,7 @@ def print_dataset_time_spans(root_path, data_path, seq_len):
     border2s = [num_train, num_train + num_vali, total_rows]
 
     split_names = ["train", "val", "test"]
-    print("  数据时间跨度 (8:1:1):")
+    print("  Data time span (8:1:1):")
     for split_name, b1, b2 in zip(split_names, border1s, border2s):
         split_dates = df.iloc[b1:b2]["date"]
         print(
@@ -86,16 +86,16 @@ def find_latest_metrics_path(run_name, dataset_label):
 
 
 def run_model(model_spec, data_path, dataset_label):
-    """运行单个模型"""
+    """Run a single model."""
     run_name = model_spec["run_name"]
     display_name = model_spec["display_name"]
-    print(f"\n运行模型: {display_name} on {dataset_label}")
+    print(f"\nRunning model: {display_name} on {dataset_label}")
     root_path = "./dataset/"
     features = "MS"
     target = "water_inflow"
     seq_len = "24"
     enc_in, dec_in, c_out = infer_feature_dims(root_path, data_path, target, features)
-    print(f"  自动推断维度: enc_in={enc_in}, dec_in={dec_in}, c_out={c_out}")
+    print(f"  Inferred dimensions: enc_in={enc_in}, dec_in={dec_in}, c_out={c_out}")
     print_dataset_time_spans(root_path, data_path, int(seq_len))
 
     cmd = [
@@ -138,13 +138,13 @@ def run_model(model_spec, data_path, dataset_label):
 
     result = subprocess.run(cmd)
     if result.returncode != 0:
-        print(f"  命令失败，返回码: {result.returncode}")
+        print(f"  Command failed with return code: {result.returncode}")
     return result.returncode == 0
 
 
 def main():
     print("=" * 60)
-    print("开始运行深度学习模型对比实验")
+    print("Starting deep learning model comparison experiment")
     print("=" * 60)
 
     results = {}
@@ -154,7 +154,7 @@ def main():
 
     for data_path, dataset_label in DATASETS:
         print(f"\n{'='*60}")
-        print(f"数据集: {dataset_label}")
+        print(f"Dataset: {dataset_label}")
         print(f"{'='*60}")
 
         results[dataset_label] = {}
@@ -164,7 +164,7 @@ def main():
             display_name = model_spec["display_name"]
             success = run_model(model_spec, data_path, dataset_label)
             results[dataset_label][display_name] = "Success" if success else "Failed"
-            print(f"  {display_name}: {'成功' if success else '失败'}")
+            print(f"  {display_name}: {'Success' if success else 'Failed'}")
 
             metrics_path = find_latest_metrics_path(run_name, dataset_label) if success else ""
             row = {
@@ -210,7 +210,7 @@ def main():
     success_df.to_csv(summary_dir / "dl_comparison_670_ranking_by_nse.csv", index=False)
 
     print("\n" + "=" * 60)
-    print("深度学习模型对比完成")
+    print("Deep learning model comparison completed")
     print("=" * 60)
 
 

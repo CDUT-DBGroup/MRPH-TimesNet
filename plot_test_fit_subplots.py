@@ -1,11 +1,11 @@
 """
-绘制测试集真实值与预测值的多子图拟合图。
+Plot multi-panel fitting curves for observed and predicted values on the test set.
 
-功能说明：
-- 从 `results/dl_result/res_all/dl_comparison_610_summary.csv` 读取各模型结果目录。
-- 读取每个模型测试阶段生成的 `pred.npy` 和 `true.npy`。
-- 将测试集上的真实涌水量与预测涌水量画到一张总图中，每个模型对应一个子图。
-- 输出图片保存到 `results/dl_result/dl_comparison_610_test_fit_subplots.png`。
+Functionality:
+- Read model result directories from `results/dl_result/res_all/dl_comparison_610_summary.csv`.
+- Load `pred.npy` and `true.npy` generated during testing for each model.
+- Plot observed and predicted inflow values on the test set in a single multi-panel figure.
+- Save the output figure to `results/dl_result/dl_comparison_610_test_fit_subplots.png`.
 """
 
 import argparse

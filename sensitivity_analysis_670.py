@@ -1,6 +1,6 @@
 """
-参数敏感性分析 - 基于训练好的 MRPH-TimesNet 检查点，
-对物理参数 alpha / beta / gamma 及门控参数进行一因一变评估（RF670）。
+Parameter sensitivity analysis based on trained MRPH-TimesNet checkpoints.
+Evaluates physical parameters alpha / beta / gamma and gating parameters with one-factor-at-a-time sweeps (RF670).
 """
 import argparse
 from pathlib import Path
@@ -113,7 +113,7 @@ def safe_to_csv(df: pd.DataFrame, path: Path) -> Path:
     except PermissionError:
         fallback_path = path.with_name(f"{path.stem}_latest{path.suffix}")
         df.to_csv(fallback_path, index=False)
-        print(f"文件被占用，已改写到备用文件: {fallback_path}")
+        print(f"File is in use; wrote to fallback file: {fallback_path}")
         return fallback_path
 
 
@@ -445,16 +445,16 @@ def run_sensitivity_analysis() -> pd.DataFrame:
     all_parameter_names = PHYSICAL_PARAMETERS + GATE_PARAMETERS
     baseline_values = {parameter_name: get_parameter_value(base_model, parameter_name) for parameter_name in all_parameter_names}
 
-    print("=== MRPH-TimesNet 参数敏感性分析 (RF670) ===")
-    print("使用真实检查点进行一因一变评估，不再使用代理模型或加噪声模拟。")
+    print("=== MRPH-TimesNet Parameter Sensitivity Analysis (RF670) ===")
+    print("Using real checkpoints for one-factor-at-a-time evaluation without surrogate models or noise simulation.")
     print(
-        "学习到的物理参数基线: "
+        "Learned physical parameter baseline: "
         f"alpha={baseline_values['alpha']:.6f}, "
         f"beta={baseline_values['beta']:.6f}, "
         f"gamma={baseline_values['gamma']:.6f}"
     )
     print(
-        "学习到的门控参数基线: "
+        "Learned gate parameter baseline: "
         f"phys_gate={baseline_values['phys_gate']:.6f}, "
         f"msrla_gate={baseline_values['msrla_gate']:.6f}"
     )
@@ -482,7 +482,7 @@ def run_sensitivity_analysis() -> pd.DataFrame:
             num_points=cli_args.num_points,
             relative_span=cli_args.relative_span,
         )
-        print(f"\n分析 {parameter_name}，扫描值: {sweep_values}")
+        print(f"\nAnalyzing {parameter_name}, sweep values: {sweep_values}")
 
         for value in sweep_values:
             row = evaluate_parameter_setting(model_args, checkpoint_path, parameter_name, value)
@@ -544,10 +544,10 @@ def run_sensitivity_analysis() -> pd.DataFrame:
         "One-Factor-at-a-Time Sensitivity of MRPH-TimesNet Fusion Gates on RF670",
     )
 
-    print(f"\n敏感性分析完成，结果已保存到: {output_dir}")
-    print(f"参数总表: {catalog_csv_path}")
-    print(f"详细结果表: {results_csv_path}")
-    print(f"汇总结果表: {summary_csv_path}")
+    print(f"\nSensitivity analysis completed. Results saved to: {output_dir}")
+    print(f"Parameter catalog: {catalog_csv_path}")
+    print(f"Detailed results table: {results_csv_path}")
+    print(f"Summary table: {summary_csv_path}")
     return results_df
 
 

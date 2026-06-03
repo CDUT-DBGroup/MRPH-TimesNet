@@ -1,13 +1,13 @@
 """
-不确定性分析实验
+Uncertainty analysis experiment
 
-主方案:
+Main scheme:
 1. Ensemble (5-10 models)
 
-补充方案:
+Supplementary scheme:
 2. Monte Carlo Dropout
 
-核心输出:
+Core outputs:
 - 90% / 95% prediction interval
 - PICP (coverage rate)
 - PINAW
