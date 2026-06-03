@@ -50,7 +50,7 @@ MRPH-TimesNet/
 | `exp/` | Experiment classes inherited from the Time-Series-Library framework. These files define training, validation, testing, and prediction workflows for different time series tasks. |
 | `data_provider/` | Data loading and preprocessing modules. `data_loader.py` and `data_factory.py` are used to build datasets and dataloaders for model training and evaluation. |
 | `utils/` | Utility functions, including metrics, early stopping, learning rate scheduling, time feature encoding, data augmentation, masking, DTW calculation, and argument printing. |
-| `dataset/` | Rainfall-inflow datasets used in the experiments. The current project uses `water_timeseries_610.csv` and `water_timeseries_670.csv`. |
+| `dataset/` | Dataset description and expected data format. The original rainfall-inflow datasets are not publicly released because they contain confidential underground mine groundwater monitoring data. |
 | `scripts/` | Original shell scripts from Time-Series-Library for benchmark experiments. They are kept mainly for framework completeness and reference. |
 
 ### Configuration and Entry Files
@@ -100,8 +100,9 @@ MRPH-TimesNet/
 
 | File | Description |
 | --- | --- |
-| `dataset/water_timeseries_610.csv` | Rainfall, cumulative rainfall, water level, and water inflow time series for the 610 dataset. |
-| `dataset/water_timeseries_670.csv` | Rainfall, cumulative rainfall, water level, and water inflow time series for the 670 dataset. |
+| `dataset/README.md` | Explains why the original datasets are not included and describes the required CSV format for reproduction. |
+| `dataset/water_timeseries_610.csv` | Confidential rainfall-inflow dataset used in the 610 experiment. It is not included in the public repository and should be prepared by the user if reproduction is required. |
+| `dataset/water_timeseries_670.csv` | Confidential rainfall-inflow dataset used in the 670 experiment. It is not included in the public repository and should be prepared by the user if reproduction is required. |
 
 ### Model Files
 
@@ -167,14 +168,14 @@ pip install -r requirements.txt
 
 ### 3. Prepare Data
 
-Place the rainfall-inflow datasets under `dataset/`:
+The original rainfall-inflow datasets are not included in this repository because they contain confidential underground mine groundwater monitoring data. To reproduce the experiments, prepare your own datasets under `dataset/` with the following file names:
 
 ```text
 dataset/water_timeseries_610.csv
 dataset/water_timeseries_670.csv
 ```
 
-The expected data format is a time series CSV file with a `date` column, rainfall-related input variables, water level variables, and the target variable `water_inflow`.
+The expected data format is a time series CSV file with a `date` column, rainfall-related input variables, water level variables, and the target variable `water_inflow`. See `dataset/README.md` for the required column structure.
 
 ### 4. Train and Test MRPH-TimesNet
 
@@ -252,7 +253,7 @@ The generated figures can be used for visual comparison of predicted and observe
 
 - The `checkpoints/` directory stores trained model weights and is usually not recommended for direct GitHub upload.
 - If pretrained weights are required for reproducing analysis scripts, please provide them through GitHub Releases, Zenodo, Hugging Face, or another external storage service.
-- If the original rainfall-inflow data cannot be publicly released, provide a sample dataset and describe the data format in `dataset/README.md`.
+- The original rainfall-inflow datasets are confidential and are not included in the public repository. The required data format is described in `dataset/README.md`.
 
 ## Acknowledgement
 
